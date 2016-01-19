@@ -1,0 +1,1 @@
+"./ClockSystem.obj" "./ST7735.obj" "./ST7735TestMain.obj" "./msp432_startup_ccs.obj" "../msp432p401r.cmd" -l"libc.a" 
