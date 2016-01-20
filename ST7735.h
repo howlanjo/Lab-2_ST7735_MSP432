@@ -99,6 +99,12 @@ enum initRFlags{
   INITR_BLACKTAB
 };
 
+#define TOP_RIGHT		0
+#define TOP_LEFT		1
+#define	BOTTOM_RIGHT	2
+#define	BOTTOM_LEFT		3
+#define	CENTER			4
+
 #define ST7735_TFTWIDTH  128
 #define ST7735_TFTHEIGHT 160
 

@@ -100,8 +100,8 @@ uint32_t StY=0; // position along the vertical axis 0 to 15
 uint16_t StTextColor = ST7735_YELLOW;
 
 uint16_t TextColor = 0;
-uint16_t BgColor = 0;
-uint8_t TextSize = 0;
+uint16_t BgColor = 0xFFFF;
+uint8_t TextSize = 1;
 
 #define ST7735_NOP     0x00
 #define ST7735_SWRESET 0x01
@@ -1708,3 +1708,41 @@ void Output_On(void){ // Turns on the display
 void Output_Color(uint32_t newColor){ // Set color of future output
   ST7735_SetTextColor(newColor);
 }
+
+void ST7735_Counter(int location, int size)
+{
+	int x, y, counter;
+	char c;
+
+	switch (location)
+	{
+		case TOP_RIGHT:
+			x = 124-(6*size);
+			y = 0;
+		break;
+		case TOP_LEFT:
+			x = 0;
+			y = 0;
+		break;
+		case BOTTOM_RIGHT:
+			x = 124-(6*size);
+			y = 155-(10*size);
+		break;
+		case BOTTOM_LEFT:
+			x = 0;
+			y = 155-(10*size);
+		break;
+		case CENTER:
+			x = 50;
+			y = 80-((10*size))/2;
+		break;
+	}
+	c = '0';
+	for(counter = 0; counter < 10; counter++)
+	{
+		ST7735_DrawCharS(x, y, (c+counter), 0, 0xFFFF, size);
+		DelayWait10ms(50);
+	}
+
+}
+
